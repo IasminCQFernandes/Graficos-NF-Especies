@@ -34,7 +34,7 @@ def get_db_connection():
             f"DATABASE={db_secrets['DATABASE']};UID={db_secrets['UID']};PWD={db_secrets['PWD']}"
         )
         
-        conn = pyodbc.connect(conn_str, timeout=5)
+        conn = pyodbc.connect(conn_str, timeout=50)
         return conn
     except pyodbc.Error as e:
         sqlstate = e.args[0]
@@ -214,4 +214,5 @@ else:
         Empresa_pag: {empresa_display}
         Especie_nfe: {especie_display}
         DataProc_Pag: entre {data_proc_pag_min} e {data_proc_pag_max}
+
         """)
